@@ -23,12 +23,16 @@ has_meny:purchases
 | name     | string | null: false |
 |description|text 　| null: false |
 | price    | integer| null: false |
-|category_id  | string | null: false |
+|category_id  | integer| null: false |
 |condition_id |integer | null: false |
 |charges_id   | integer| null: false |
 |area_id      |integer | null: false |
-| date     ｜integer | null: false |
+| date        ｜date   | null: false |
 | user | references | null: false, foreign_key: true |
+|purchases| references | null: false, foreign_key: true |
+
+belongs_to:users
+has_one:purchases
 
 
 ## purchasesテーブル
@@ -37,8 +41,11 @@ has_meny:purchases
 | ------ | ---------- | ------------------------------ |
 |item   | references | null: false, foreign_key: true |
 |user    | references | null: false, foreign_key: true |
+|address   | references | null: false, foreign_key: true |
+
 
 belongs_to:user
+belongs_to:item
 has_one:address
 
 
@@ -53,6 +60,8 @@ has_one:address
 |num        | string     | null: false,                   ｜
 |phone_number| string     | null: false,                   ｜
 |user   | references | null: false, foreign_key:true  |
+|  purchases  | references | null: false, foreign_key:true  |
+
 
 
 belongs_to:purchase
