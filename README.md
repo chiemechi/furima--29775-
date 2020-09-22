@@ -22,7 +22,7 @@ has_meny:purchases
 | ------   | ------ | ----------- 
 | name     | string | null: false |
 |description|text 　| null: false |
-| price    | string | null: false |
+| price    | integer| null: false |
 |category  | string | null: false |
 |condition | string | null: false |
 |charges   | string | null: false |
