@@ -27,7 +27,7 @@ has_meny:purchases
 |condition | string | null: false |
 |charges   | string | null: false |
 |area      | string | null: false |
-| date     | string | null: false |
+| date     ｜date   | null: false |
 | users_id  | references | null: false, foreign_key: true |
 
 ## imagesテーブル
