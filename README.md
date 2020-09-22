@@ -23,32 +23,22 @@ has_meny:purchases
 | name     | string | null: false |
 |description|text 　| null: false |
 | price    | integer| null: false |
-|category  | string | null: false |
-|condition | string | null: false |
-|charges   | string | null: false |
-|area      | string | null: false |
-| date     ｜date   | null: false |
-| users_id  | references | null: false, foreign_key: true |
-
-## imagesテーブル
-
-| Column | Type       | Options                        |
-| ------ | ---------- | ------------------------------ |
-|image   | string     | null: false,                   |
-|item_id | references | null: false, foreign_key: true |
-
-has_meny:items
+|category_id  | string | null: false |
+|condition_id |integer | null: false |
+|charges_id   | integer| null: false |
+|area_id      |integer | null: false |
+| date     ｜integer | null: false |
+| user | references | null: false, foreign_key: true |
 
 
 ## purchasesテーブル
 
 | Column | Type       | Options                        |
 | ------ | ---------- | ------------------------------ |
-| item_id| references | null: false, foreign_key: true |
-|user_id | references | null: false, foreign_key: true |
+|item   | references | null: false, foreign_key: true |
+|user    | references | null: false, foreign_key: true |
 
 belongs_to:user
-has_one:pay
 has_one:address
 
 
@@ -57,12 +47,12 @@ has_one:address
 
 | Column    | Type       | Options                        |
 | -------   |  ----------| ------------------------------|
-|prefectures_id| integr     |null: false                     |
-|city       | references | null: false,                   ｜
-|building   | references | null: false,                   ｜
-|num        | references | null: false,                   ｜
-|phone_number|references | null: false,                   ｜
-|user_id    | references | null: false, foreign_key:true  |
+|prefectures_id| integr   |null: false                     |
+|city       | string 　　　| null: false,                   ｜
+|building   | string     |                ｜
+|num        | string     | null: false,                   ｜
+|phone_number| string     | null: false,                   ｜
+|user   | references | null: false, foreign_key:true  |
 
 
 belongs_to:purchase
