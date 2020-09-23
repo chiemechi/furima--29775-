@@ -10,7 +10,7 @@
 |first_name| string | null: false |
 |first_kana| string | null: false |
 |last_kana | string | null: false |
-| date     |date    | null: false |
+|birth_day |date    | null: false |
 
 
 has_many:items
@@ -27,7 +27,7 @@ has_many:purchases
 |condition_id |integer | null: false |
 |charges_id   | integer| null: false |
 |area_id      |integer | null: false |
-| date_id        ｜integer  | null: false |
+| date_id     ｜integer  | null: false |
 | user | references | null: false, foreign_key: true |
 
 belongs_to:users
@@ -58,7 +58,7 @@ has_one:address
 |building   | string     |                ｜
 |num        | string     | null: false,                   ｜
 |phone_number| string     | null: false,                   ｜
-|  purchases  | references | null: false, foreign_key:true  |
+|purchase  | references | null: false, foreign_key:true  |
 
 
 
