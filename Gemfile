@@ -56,3 +56,6 @@ group :development do
   gem 'rubocop', require: false
   gem'devise'
 end
+group :production do
+  gem 'rails_12factor'
+end
