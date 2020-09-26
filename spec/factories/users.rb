@@ -1,20 +1,13 @@
 FactoryBot.define do
   factory :user do
-    nickname              {Faker::Name}
-    email                 {Faker::Internet.free_email}
-    password              {Faker::Internet.password(min_length: 6)}
-    password_confirmation {password}
-    last_name
-    first_name
-    first_kana
-    last_kana
-    birth_day{Faker::dateTimeBetween}
-
-
-
-
-
-
-    
+    nickname              { 'ああ' }
+    email                 { 'aaaa@gmail.com' }
+    password              { 'aaaa1111' }
+    password_confirmation { 'aaaa1111' }
+    first_name            { '太郎' }
+    last_name             { '山田' }
+    first_name_kana       { 'タロウ' }
+    last_name_kana        { 'ヤマダ' }
+    birth_day             { '2000/01/01' }
   end
 end
