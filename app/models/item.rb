@@ -9,8 +9,9 @@ class Item < ApplicationRecord
 
 
 
-  validates  :name, presence: true
+  validates  :name, presence: true,numericality: {greater_than_or_equal_to: 300,less_than: 9999999}
   validates  :description, presence: true
+  validates  :price, presence: true, format: { with: /^[0-9]+$/ }
 
 
   with_options presence: true, numericality: { other_than: 1 } do
