@@ -8,6 +8,11 @@ class Item < ApplicationRecord
   belongs_to :user
 
 
+
+  validates  :name, presence: true
+  validates  :description, presence: true
+
+
   with_options presence: true, numericality: { other_than: 1 } do
   validates :category
   validates :area
@@ -15,3 +20,4 @@ class Item < ApplicationRecord
   validates :condition
   validates :send_date
   end
+
