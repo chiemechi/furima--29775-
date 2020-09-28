@@ -8,7 +8,7 @@ class CreateItems < ActiveRecord::Migration[6.0]
       t.integer :condition_id,null: false
       t.integer :charges_id,null: false
       t.integer :area_id,null: false
-      t.integer :send_id,null: false
+      t.integer :send_date_id,null: false
       t.references :user,null: false, foreign_key: true
       t.timestamps
     end
