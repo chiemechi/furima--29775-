@@ -41,9 +41,9 @@ RSpec.describe Item, type: :model do
     end
 
     it 'charges_id_idが空では登録できないこと' do
-      @item.charges_id = nil
+      @item.charges_id = 1
       @item.valid?
-      expect(@item.errors.full_messages).to include("Charges can't be blank")
+      expect(@item.errors.full_messages).to include("Charges must be other than 1")
     end
 
     it 'area_idが空では登録できないこと' do
@@ -53,9 +53,9 @@ RSpec.describe Item, type: :model do
     end
 
     it 'send_date_idが空では登録できないこと' do
-      @item.send_date_id = nil
+      @item.send_date_id = 1
       @item.valid?
-      expect(@item.errors.full_messages).to include("Send date can't be blank")
+      expect(@item.errors.full_messages).to include("Send date must be other than 1")
     end
 
     it '画像は1枚必須であること' do
