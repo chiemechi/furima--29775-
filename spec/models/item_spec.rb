@@ -29,31 +29,31 @@ RSpec.describe Item, type: :model do
     end
 
     it 'category_idが空では登録できないこと' do
-      @item.category = nil
+      @item.category_id = nil
       @item.valid?
       expect(@item.errors.full_messages).to include("Category can't be blank")
     end
 
     it 'condition_idが空では登録できないこと' do
-      @item.condition = nil
+      @item.condition_id = nil
       @item.valid?
       expect(@item.errors.full_messages).to include("Condition can't be blank")
     end
 
     it 'charges_id_idが空では登録できないこと' do
-      @item.charges = nil
+      @item.charges_id = nil
       @item.valid?
       expect(@item.errors.full_messages).to include("Charges can't be blank")
     end
 
     it 'area_idが空では登録できないこと' do
-      @item.area = nil
+      @item.area_id = nil
       @item.valid?
       expect(@item.errors.full_messages).to include("Area can't be blank")
     end
 
     it 'send_date_idが空では登録できないこと' do
-      @item.send_date = nil
+      @item.send_date_id = nil
       @item.valid?
       expect(@item.errors.full_messages).to include("Send date can't be blank")
     end
@@ -64,13 +64,21 @@ RSpec.describe Item, type: :model do
       expect(@item.errors.full_messages).to include("Image can't be blank")
     end
 
-    it '価格の範囲が、¥300~¥9,999,999出ないとダメ' do
+    it '価格の範囲が、¥300~出ないとダメ' do
       @item.price = 100
       @item.valid?
 
       expect(@item.errors.full_messages).to include('Price must be greater than or equal to 300')
     end
 
+    it '価格の範囲が、上限9999999ないとダメ' do
+      @item.price = 1000000000000000000000000000
+      @item.valid?
+      expect(@item.errors.full_messages).to include('Price must be less than 9999999')
+    end
+
+
+    
     it '販売価格は半角数字のみ保存可能であること' do
       @item.price = '４４４'
       @item.valid?
