@@ -10,18 +10,18 @@ class Item < ApplicationRecord
 
   has_one_attached :image
 
-
-  validates  :name, presence: true,numericality: {greater_than_or_equal_to: 300,less_than: 9999999}
+  
   validates  :description, presence: true
-  validates  :price, presence: true
-
+  validates  :name, presence: true
+  validates  :price, presence: true,numericality: {greater_than_or_equal_to: 300,less_than: 9999999}
+  validates  :image, presence: true
 
   with_options presence: true, numericality: { other_than: 1 } do
-    validates :category
-    validates :area
-    validates :charges
-    validates :condition
-    validates :send_date
-  end
+    validates :category_id
+    validates :area_id
+    validates :charges_id
+    validates :condition_id
+    validates :send_date_id
+   end
 end
 
