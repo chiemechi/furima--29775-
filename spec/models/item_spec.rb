@@ -29,15 +29,15 @@ RSpec.describe Item, type: :model do
     end
 
     it 'category_idが空では登録できないこと' do
-      @item.category_id = nil
+      @item.category_id =1
       @item.valid?
-      expect(@item.errors.full_messages).to include("Category can't be blank")
+      expect(@item.errors.full_messages).to include("Category must be other than 1")
     end
 
     it 'condition_idが空では登録できないこと' do
-      @item.condition_id = nil
+      @item.condition_id =1
       @item.valid?
-      expect(@item.errors.full_messages).to include("Condition can't be blank")
+      expect(@item.errors.full_messages).to include("Condition must be other than 1")
     end
 
     it 'charges_id_idが空では登録できないこと' do
