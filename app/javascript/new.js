@@ -5,22 +5,23 @@ window.addEventListener('load', function(){
   const profit = document.getElementById("profit");//販売利益
 
    // 価格入力時に手数料、利益計算
-     priceInput.addEventListener('keyup', () => {
-         const value = priceInput.value; //value（入力の金額を定義）
-         
-       if (value >= 300 && value <= 9999999){
-         let fee = value * 0.1
-         let gains = value - fee
-         console.log(fee)
-         add_tax.textContent = fee;
-         profit.textContent = gains;
-     } else {
-       let fee = '-';
-       let gains = '-';
-       add_tax.textContent = fee;
-       profit.textContent = gains;
-     }
-   });
+   priceInput.addEventListener('keyup', () => {
+    const value = priceInput.value; //value（入力の金額を定義）
+
+         if (value >= 300 && value <= 9999999){
+          let fee =  Math.floor(value * 0.1)  //fee（tax）
+          let gains = value - fee
+          add_tax.textContent = fee;
+          profit.textContent = gains;
+
+
+      } else {
+        let fee = '-';
+        let gains = '-';
+        add_tax.textContent = fee;
+        profit.textContent = gains;
+      }
+    });
 })
 
    
