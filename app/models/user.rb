@@ -17,7 +17,7 @@ class User < ApplicationRecord
     validates :last_name
   end
 
-  has_many:item
+  has_many :item
 
   with_options presence: true, format: { with: /\A[ア-ン゛゜ァ-ォャ-ョー「」、]+\z/ } do
     validates :first_name_kana
