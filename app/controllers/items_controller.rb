@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :move_to_index, except: :index
+  before_action :move_to_index, except: [:index,:show]
 
   def index
     
@@ -20,6 +20,10 @@ class ItemsController < ApplicationController
     end
   end
 
+  def show
+  @item = Item.find(params[:id])
+  end
+
   private
 
   def move_to_index
@@ -29,4 +33,5 @@ class ItemsController < ApplicationController
   def item_params
     params.require(:item).permit(:name, :description, :price, :image, :category_id, :condition_id, :charges_id, :area_id, :send_date_id).merge(user_id: current_user.id)
   end
+
 end
