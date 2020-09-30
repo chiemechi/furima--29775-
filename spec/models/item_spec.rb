@@ -29,21 +29,21 @@ RSpec.describe Item, type: :model do
     end
 
     it 'category_idが空では登録できないこと' do
-      @item.category_id =1
+      @item.category_id = 1
       @item.valid?
-      expect(@item.errors.full_messages).to include("Category must be other than 1")
+      expect(@item.errors.full_messages).to include('Category must be other than 1')
     end
 
     it 'condition_idが空では登録できないこと' do
-      @item.condition_id =1
+      @item.condition_id = 1
       @item.valid?
-      expect(@item.errors.full_messages).to include("Condition must be other than 1")
+      expect(@item.errors.full_messages).to include('Condition must be other than 1')
     end
 
     it 'charges_id_idが空では登録できないこと' do
       @item.charges_id = 1
       @item.valid?
-      expect(@item.errors.full_messages).to include("Charges must be other than 1")
+      expect(@item.errors.full_messages).to include('Charges must be other than 1')
     end
 
     it 'area_idが空では登録できないこと' do
@@ -55,7 +55,7 @@ RSpec.describe Item, type: :model do
     it 'send_date_idが空では登録できないこと' do
       @item.send_date_id = 1
       @item.valid?
-      expect(@item.errors.full_messages).to include("Send date must be other than 1")
+      expect(@item.errors.full_messages).to include('Send date must be other than 1')
     end
 
     it '画像は1枚必須であること' do
@@ -72,13 +72,11 @@ RSpec.describe Item, type: :model do
     end
 
     it '価格の範囲が、上限9999999ないとダメ' do
-      @item.price = 1000000000000000000000000000
+      @item.price = 1_000_000_000_000_000_000_000_000_000
       @item.valid?
       expect(@item.errors.full_messages).to include('Price must be less than 9999999')
     end
 
-
-    
     it '販売価格は半角数字のみ保存可能であること' do
       @item.price = '４４４'
       @item.valid?
