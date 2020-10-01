@@ -1,6 +1,8 @@
 class ItemsController < ApplicationController
   before_action :move_to_index, except: [:index, :show]
   before_action :set_items, only: [:show, :update,:edit,:destroy]
+  before_action :set_show, only: [:update,:edit,:destroy]
+
 
 
   def index
@@ -22,6 +24,8 @@ class ItemsController < ApplicationController
   end
 
   def show
+  
+    
   end
 
   def edit
@@ -41,7 +45,7 @@ class ItemsController < ApplicationController
     if@item.update(item_params)
       redirect_to root_path
     else
-      render :edit
+      render :show
     end
   end
 
@@ -60,6 +64,10 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
   end
 
-
+  def set_show
+  if user_signed_in? && current_user.id !=  @item.user_id
+    redirect_to item_path(item.id)
+  end
+  end
 
 end
