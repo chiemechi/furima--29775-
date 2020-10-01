@@ -34,7 +34,7 @@ belongs_to:users
 has_one:purchases
 
 
-## purchasesテーブル
+## ordersテーブル
 
 | Column | Type       | Options                        |
 | ------ | ---------- | ------------------------------ |
