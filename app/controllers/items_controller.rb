@@ -56,7 +56,7 @@ class ItemsController < ApplicationController
 
   def set_show
   if user_signed_in? && current_user.id !=  @item.user_id
-    redirect_to item_path(item.id)
+    redirect_to item_path(@item.id)
   end
   end
 
