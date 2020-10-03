@@ -75,6 +75,8 @@
         <%= f.text_field :cvc,name: "cvc",class:"input-default", id:"card-cvc", placeholder:"カード背面4桁もしくは3桁の番号", maxlength:"4" %>
       </div>
     </div>
+
+     <%= render 'shared/error_messages', model: @order_address %>
     <%# /カード情報の入力 %>
     
     <%# 配送先の入力 %>
