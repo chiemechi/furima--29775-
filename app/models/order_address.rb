@@ -17,9 +17,11 @@ class OrderAddress
     # 市町村に関するバリデーション
     validates :city, format: { with: /\A[ぁ-んァ-ン一-龥]/}
    # 携帯番号
-    validates :phone_number,format: { with: (/\d/)}
-  end
+    validates :phone_number,format: { with:/\A[0-9]+\z/}
+    validates :house_number
 
+  end
+  validates :phone_number,length: {maximum:11 }
  
   validates :token, presence: true
 
