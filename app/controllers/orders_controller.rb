@@ -7,6 +7,11 @@ class OrdersController < ApplicationController
     if @item.order.present?
       redirect_to root_path
    end
+   
+   if user_signed_in? && current_user.id == @item.user_id 
+     redirect_to root_path
+   end
+   
   end
 
   def create   
@@ -17,7 +22,9 @@ class OrdersController < ApplicationController
     else
       render 'index'
     end
+    
   end
+
   private
 
   def order_address_params
