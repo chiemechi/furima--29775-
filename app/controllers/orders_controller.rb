@@ -1,13 +1,12 @@
 class OrdersController < ApplicationController
   before_action :move_to_order_index, only: :index
+  before_action :set_params, only: :index,:creat
 
   def index
-    @item = Item.find(params[:item_id])
     @order_address = OrderAddress.new
   end
 
-  def create
-    @item = Item.find(params[:item_id])
+  def create   
     @order_address = OrderAddress.new(order_address_params)
     if @order_address.valid?
       pay_item
@@ -25,7 +24,7 @@ class OrdersController < ApplicationController
   end
 
   def pay_item
-    Payjp.api_key = 'sk_test_3c0691336629bb2e58f357a4'  # PAY.JPテスト秘密鍵
+    Payjp.api_key = ENV["PAYJP_SECRET_KEY"]  # PAY.JPテスト秘密鍵
     Payjp::Charge.create(
       amount: @item.price, # 商品の値段
       card: order_address_params[:token], # カードトークン
@@ -35,5 +34,10 @@ class OrdersController < ApplicationController
 
   def move_to_order_index
     redirect_to new_user_session_path unless user_signed_in?
+  end
+
+  def set_params
+    @item = Item.find(params[:item_id])
+
   end
 end

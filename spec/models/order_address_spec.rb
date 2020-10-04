@@ -10,6 +10,12 @@ RSpec.describe OrderAddress, type: :model do
       expect(@order_address).to be_valid
     end
 
+    it '建物名が空でも登録できる事' do
+      @order_address.building = nil
+      expect(@order_address).to be_valid
+    end
+
+
     it '郵便番号が空では登録できないこと' do
       @order_address.postal_code = nil
       @order_address.valid?
@@ -57,5 +63,7 @@ RSpec.describe OrderAddress, type: :model do
       @order_address.valid?
       expect(@order_address.errors.full_messages).to include('Phone number is too long (maximum is 11 characters)')
     end
+
+
   end
 end
