@@ -1,22 +1,23 @@
 class OrdersController < ApplicationController
   before_action :move_to_order_index, only: :index
-  before_action :set_params, only: :index,:creat
+  before_action :set_params, only: [:index,:creat]
 
   def index
     @order_address = OrderAddress.new
+    if @item.order.present?
+      redirect_to root_path
+   end
   end
 
   def create   
     @order_address = OrderAddress.new(order_address_params)
     if @order_address.valid?
-      pay_item
       @order_address.save
       redirect_to root_path
     else
       render 'index'
     end
   end
-
   private
 
   def order_address_params
@@ -38,6 +39,5 @@ class OrdersController < ApplicationController
 
   def set_params
     @item = Item.find(params[:item_id])
-
   end
 end
