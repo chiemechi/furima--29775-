@@ -67,15 +67,15 @@
         </tr>
         <tr>
           <th class="detail-item">配送料の負担</th>
-          <td class="detail-value"><%= @item.send_date.name %></td>
+          <td class="detail-value"><%= @item.charges.name%></td>
         </tr>
         <tr>
           <th class="detail-item">発送元の地域</th>
-          <td class="detail-value"><%=@item.category.name %></td>
+          <td class="detail-value"><%=@item.area.name %></td>
         </tr>
         <tr>
           <th class="detail-item">発送日の目安</th>
-          <td class="detail-value"><%= "発送日の目安" %></td>
+          <td class="detail-value"><%=@item.send_date.name %></td>
         </tr>
       </tbody>
     </table>
